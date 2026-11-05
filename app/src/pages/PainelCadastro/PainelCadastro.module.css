@@ -1,0 +1,324 @@
+.resumoErros {
+  background: #fbeae6;
+  color: var(--color-terracota-dark);
+  border-radius: var(--radius-sm);
+  padding: var(--space-3) var(--space-4);
+  font-weight: var(--font-weight-semibold);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: var(--space-6);
+}
+
+.duas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+/* ---------- Fotos ---------- */
+
+.fotoPrincipal {
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--color-bg-muted);
+}
+
+.fotoPrincipal img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.fotoVazia {
+  width: 100%;
+  height: 100%;
+  border: 2px dashed var(--color-terracota);
+  border-radius: var(--radius-md);
+  background: var(--color-terracota-light);
+  color: var(--color-terracota-dark);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  text-align: center;
+}
+
+.fotoVazia strong {
+  font-size: var(--text-lg);
+}
+
+.fotoVazia span {
+  font-size: var(--text-sm);
+}
+
+.dropzone {
+  margin-top: var(--space-3);
+  border: 1.5px dashed var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  text-align: center;
+}
+
+.dropzone span {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+.erroFoto {
+  color: var(--color-terracota-dark);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-semibold);
+  margin: var(--space-2) 0 0;
+}
+
+.thumbs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+
+.thumbs li {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 2px solid transparent;
+}
+
+.thumbs img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.thumbPrincipal {
+  border-color: var(--color-terracota) !important;
+}
+
+.thumbTag,
+.thumbTornar {
+  position: absolute;
+  left: 4px;
+  bottom: 4px;
+  font-size: 10px;
+  font-weight: var(--font-weight-bold);
+  border-radius: var(--radius-pill);
+  padding: 1px 6px;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.thumbTag {
+  background: var(--color-terracota);
+  color: var(--color-white);
+}
+
+.thumbTornar {
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--color-text);
+}
+
+.thumbRemover {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.6);
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---------- Status ---------- */
+
+.statusGrupo {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.statusGrupo legend {
+  font-weight: var(--font-weight-bold);
+  font-size: var(--text-sm);
+  margin-bottom: var(--space-2);
+  padding: 0;
+}
+
+.statusGrupo legend span {
+  color: var(--color-terracota);
+}
+
+.statusOpcoes {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.statusOpcao {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  padding: var(--space-2) var(--space-4);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--text-sm);
+  cursor: pointer;
+}
+
+.statusOpcao input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.statusOpcao:has(input:focus-visible) {
+  outline: 2px solid var(--color-terracota);
+  outline-offset: 2px;
+}
+
+.statusDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.st-disponivel .statusDot {
+  background: var(--color-success);
+}
+.st-em_processo .statusDot {
+  background: var(--color-warning);
+}
+.st-adotado .statusDot {
+  background: var(--color-neutral-text);
+}
+
+.statusMarcado.st-disponivel {
+  background: var(--color-success-bg);
+  border-color: var(--color-success);
+  color: var(--color-success);
+}
+.statusMarcado.st-em_processo {
+  background: var(--color-warning-bg);
+  border-color: var(--color-warning);
+  color: var(--color-warning);
+}
+.statusMarcado.st-adotado {
+  background: var(--color-neutral-bg);
+  border-color: var(--color-neutral-text);
+}
+
+.dica {
+  display: block;
+  margin-top: var(--space-2);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+/* ---------- Opcionais ---------- */
+
+.opcionais {
+  margin-top: var(--space-6);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-sm);
+}
+
+.opcionais summary {
+  cursor: pointer;
+  padding: var(--space-4);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-terracota-dark);
+}
+
+.opcionaisCorpo {
+  padding: 0 var(--space-4) var(--space-4);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.checks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+.checks fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.checks legend {
+  font-weight: var(--font-weight-bold);
+  font-size: var(--text-sm);
+  margin-bottom: var(--space-2);
+  padding: 0;
+}
+
+.checks label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.checks input {
+  width: 17px;
+  height: 17px;
+  accent-color: var(--color-terracota);
+}
+
+/* ---------- Rodapé ---------- */
+
+.rodape {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-border);
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .fotoPrincipal {
+    aspect-ratio: 16 / 10;
+  }
+}
+
+@media (max-width: 560px) {
+  .duas,
+  .checks {
+    grid-template-columns: 1fr;
+  }
+
+  .rodape {
+    flex-direction: column-reverse;
+  }
+}

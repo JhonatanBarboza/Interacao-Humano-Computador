@@ -35,10 +35,7 @@ export function Header() {
       </nav>
 
       <div className={styles.actions}>
-        <Button to="/painel" variant="ghost" size="sm">
-          Área da instituição
-        </Button>
-        <Button to="/abrigo/esperanca" variant="secondary" size="sm">
+        <Button to="/abrigos" variant="secondary" size="sm">
           <Heart size={16} /> Quero Ajudar
         </Button>
       </div>

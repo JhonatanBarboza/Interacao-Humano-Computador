@@ -1,0 +1,163 @@
+.form {
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+  margin-bottom: var(--space-6);
+  scroll-margin-top: var(--space-4);
+}
+
+.formTopo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-3);
+}
+
+.formTopo h3 {
+  margin: 0;
+  font-size: var(--text-lg);
+}
+
+.tipos {
+  display: flex;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.duas {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: var(--space-4);
+}
+
+.fotos {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.thumb {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.thumb button {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.6);
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.addFoto {
+  width: 72px;
+  height: 72px;
+  border-radius: var(--radius-sm);
+  border: 1.5px dashed var(--color-terracota);
+  background: var(--color-terracota-light);
+  color: var(--color-terracota-dark);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-semibold);
+}
+
+.formRodape {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: var(--space-4);
+}
+
+.listaTitulo {
+  font-size: var(--text-lg);
+}
+
+.vazio {
+  color: var(--color-text-muted);
+}
+
+.lista {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.item {
+  display: flex;
+  gap: var(--space-4);
+  justify-content: space-between;
+  align-items: flex-start;
+  background: var(--color-bg-muted);
+  border-radius: var(--radius-sm);
+  padding: var(--space-3) var(--space-4);
+  border: 2px solid transparent;
+}
+
+.itemEditando {
+  border-color: var(--color-terracota);
+}
+
+.itemInfo {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.itemInfo p {
+  margin: var(--space-1) 0 0;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.itemMeta {
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-terracota-dark);
+}
+
+.itemAcoes {
+  display: flex;
+  gap: var(--space-1);
+}
+
+.itemAcoes button {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--color-border);
+  background: var(--color-white);
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.itemAcoes button:hover {
+  border-color: var(--color-terracota);
+  color: var(--color-terracota-dark);
+}
+
+@media (max-width: 640px) {
+  .duas {
+    grid-template-columns: 1fr;
+  }
+}

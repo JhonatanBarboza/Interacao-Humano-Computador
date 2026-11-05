@@ -1,0 +1,108 @@
+.shell {
+  min-height: 100vh;
+  background: var(--color-terracota-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-6) var(--space-4);
+}
+
+.card {
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-8);
+  width: 100%;
+  max-width: 420px;
+}
+
+.brand {
+  text-align: center;
+  margin-bottom: var(--space-6);
+}
+
+.mark {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: var(--color-terracota);
+  color: var(--color-white);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-3);
+}
+
+.brand h1 {
+  font-size: var(--text-2xl);
+}
+
+.brand p {
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.linha {
+  display: flex;
+  justify-content: flex-end;
+  margin: calc(-1 * var(--space-2)) 0 var(--space-4);
+}
+
+.link {
+  border: none;
+  background: none;
+  padding: 0;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-terracota-dark);
+  font-size: var(--text-sm);
+}
+
+.sucesso {
+  background: var(--color-success-bg);
+  color: var(--color-success);
+  border-radius: var(--radius-sm);
+  padding: var(--space-3);
+  font-size: var(--text-sm);
+}
+
+.demo {
+  margin-top: var(--space-6);
+  padding: var(--space-4);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-muted);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  font-size: var(--text-sm);
+}
+
+.demo span {
+  color: var(--color-text-muted);
+}
+
+.demoContas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+.demoContas button {
+  border: 1.5px solid var(--color-border);
+  background: var(--color-white);
+  border-radius: var(--radius-pill);
+  padding: var(--space-1) var(--space-3);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--text-xs);
+}
+
+.voltar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  margin-top: var(--space-5);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}

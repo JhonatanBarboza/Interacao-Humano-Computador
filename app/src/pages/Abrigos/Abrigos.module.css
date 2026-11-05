@@ -1,0 +1,94 @@
+.topo {
+  margin-bottom: var(--space-5);
+}
+
+.filtros {
+  display: flex;
+  gap: var(--space-4);
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.filtros select {
+  max-width: 240px;
+}
+
+.raios {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.dica {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  margin: var(--space-2) 0 0;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: var(--space-5);
+  align-items: stretch;
+}
+
+.mapaPanel {
+  padding: var(--space-3);
+}
+
+.lista {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.item {
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-5);
+  border: 2px solid transparent;
+  transition: border-color 0.12s ease;
+}
+
+.itemAtivo {
+  border-color: var(--color-terracota);
+}
+
+.itemNome {
+  margin: 0 0 var(--space-1);
+  font-size: var(--text-lg);
+}
+
+.itemLocal {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  margin: 0 0 var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  font-weight: var(--font-weight-semibold);
+}
+
+.itemLocal svg {
+  color: var(--color-terracota);
+}
+
+.itemSlogan {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+.itemRodape {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+@media (max-width: 860px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,34 +1,71 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import { Building2, Calendar, FileText, Flag, Heart, Home, Mail, Mars, MapPin, MessageCircle, PawPrint, Phone, Venus } from "lucide-react";
-import { getAbrigoById, getAnimalById, getAnimalFotos } from "../../data";
+import {
+  ArrowRight,
+  Baby,
+  Building2,
+  Calendar,
+  Check,
+  ClipboardList,
+  FileText,
+  Flag,
+  Heart,
+  HeartPulse,
+  Home,
+  Mail,
+  Mars,
+  MapPin,
+  MessageCircle,
+  PawPrint,
+  Phone,
+  Scissors,
+  Smile,
+  Stethoscope,
+  Syringe,
+  Venus,
+  X,
+} from "lucide-react";
+import { getAbrigoById, getAnimalById, linkTelefone, linkWhatsApp, useDados } from "../../data";
 import { useFavorites } from "../../hooks/useFavorites";
 import { PageShell } from "../../components/PageShell/PageShell";
 import { Panel } from "../../components/Panel/Panel";
 import { Button } from "../../components/Button/Button";
 import { StatusBadge } from "../../components/StatusBadge/StatusBadge";
+import { SectionTitle } from "../../components/SectionTitle/SectionTitle";
+import { MapaAbrigos } from "../../components/MapaAbrigos/MapaAbrigos";
 import { PaginaNaoEncontrada } from "../PaginaNaoEncontrada/PaginaNaoEncontrada";
 import styles from "./PerfilAnimal.module.css";
 
 export function PerfilAnimal() {
   const { id } = useParams();
-  const animal = getAnimalById(id);
+  const dados = useDados();
+  const animal = getAnimalById(dados, id);
   const { isFavorito, toggleFavorito } = useFavorites();
   const [fotoAtual, setFotoAtual] = useState(0);
 
   if (!animal) return <PaginaNaoEncontrada />;
 
-  const abrigo = getAbrigoById(animal.abrigoId);
-  const fotos = getAnimalFotos(animal.id);
+  const abrigo = getAbrigoById(dados, animal.abrigoId);
+  const fotos = animal.fotos ?? [];
+  const indiceFoto = Math.min(fotoAtual, Math.max(fotos.length - 1, 0));
   const fav = isFavorito(animal.id);
   const temVariasFotos = fotos.length > 1;
+  const adotado = animal.status === "adotado";
   const SexoIcon = animal.sexo === "Macho" ? Mars : Venus;
+  const requisitos = (abrigo.requisitos ?? "").split("\n").filter((r) => r.trim());
 
-  const dados = [
+  const dadosObjetivos = [
     { label: "Espécie", value: animal.especie, icon: PawPrint, tone: "terracota" },
     { label: "Porte", value: animal.porte, icon: Flag, tone: "rosa" },
     { label: "Idade", value: animal.idade, icon: Calendar, tone: "laranja" },
     { label: "Sexo", value: animal.sexo, icon: SexoIcon, tone: "azul" },
+  ];
+
+  const saude = [
+    { label: "Vacinado", ok: animal.vacinado, icon: Syringe },
+    { label: "Castrado", ok: animal.castrado, icon: Scissors },
+    { label: "Convive com crianças", ok: animal.compativelCriancas, icon: Baby },
+    { label: "Convive com outros pets", ok: animal.compativelPets, icon: PawPrint },
   ];
 
   function fotoAnterior() {
@@ -45,10 +82,10 @@ export function PerfilAnimal() {
         <div className={styles.topGrid}>
           <div className={styles.galeria}>
             <div className={styles.fotoPrincipal}>
-              <img src={fotos[fotoAtual]} alt={animal.nome} />
+              {fotos.length > 0 && <img src={fotos[indiceFoto]} alt={`Foto ${indiceFoto + 1} de ${fotos.length} de ${animal.nome}`} />}
 
               <span className={styles.badgeAdocao}>
-                <PawPrint size={13} /> Para adoção
+                <StatusBadge status={animal.status} />
               </span>
 
               <button
@@ -71,7 +108,14 @@ export function PerfilAnimal() {
                   </button>
                   <div className={styles.dots}>
                     {fotos.map((_, i) => (
-                      <span key={i} className={[styles.dot, i === fotoAtual ? styles.dotActive : ""].join(" ")} />
+                      <button
+                        type="button"
+                        key={i}
+                        aria-label={`Ver foto ${i + 1}`}
+                        aria-current={i === indiceFoto}
+                        className={[styles.dot, i === indiceFoto ? styles.dotActive : ""].join(" ")}
+                        onClick={() => setFotoAtual(i)}
+                      />
                     ))}
                   </div>
                 </>
@@ -92,7 +136,7 @@ export function PerfilAnimal() {
 
             <Panel>
               <div className={styles.dadosGrid}>
-                {dados.map((dado) => (
+                {dadosObjetivos.map((dado) => (
                   <div className={styles.dadoItem} key={dado.label}>
                     <span className={[styles.dadoIcon, styles[`tone-${dado.tone}`]].join(" ")} aria-hidden="true">
                       <dado.icon size={18} />
@@ -105,18 +149,65 @@ export function PerfilAnimal() {
                 ))}
               </div>
             </Panel>
+
+            <Panel>
+              <SectionTitle icon={HeartPulse} title="Saúde e temperamento" />
+              <div className={styles.temperamento}>
+                <Smile size={18} aria-hidden="true" />
+                <span>
+                  Temperamento: <strong>{animal.temperamento || "não informado"}</strong>
+                </span>
+              </div>
+              <ul className={styles.saudeLista}>
+                {saude.map((item) => (
+                  <li key={item.label} className={item.ok ? styles.saudeOk : styles.saudeNao}>
+                    <item.icon size={16} aria-hidden="true" />
+                    <span>{item.label}</span>
+                    {item.ok ? <Check size={16} aria-label="sim" /> : <X size={16} aria-label="não" />}
+                  </li>
+                ))}
+              </ul>
+              {animal.necessidadesEspeciais && (
+                <p className={styles.especiais}>
+                  <Stethoscope size={16} aria-hidden="true" /> Tem necessidades especiais — veja os detalhes em “Sobre mim”.
+                </p>
+              )}
+            </Panel>
           </div>
         </div>
 
         <Panel>
-          <div className={styles.sectionTitle}>
-            <span className={styles.sectionIcon} aria-hidden="true">
-              <FileText size={17} />
-            </span>
-            <h3>Sobre mim</h3>
-          </div>
+          <SectionTitle icon={FileText} title="Sobre mim" />
           <p className={styles.descricao}>{animal.descricao}</p>
         </Panel>
+
+        {!adotado && requisitos.length > 0 && (
+          <Panel>
+            <SectionTitle
+              icon={ClipboardList}
+              title="Pré-requisitos para adoção"
+              subtitle={`Exigidos pelo ${abrigo.nome}. Confira antes de entrar em contato.`}
+            />
+            <ul className={styles.requisitos}>
+              {requisitos.map((r) => (
+                <li key={r}>
+                  <Check size={15} aria-hidden="true" /> {r}
+                </li>
+              ))}
+            </ul>
+          </Panel>
+        )}
+
+        {animal.status === "em_processo" && (
+          <p className={styles.avisoStatus} role="note">
+            {animal.nome} já está em processo de adoção. Você ainda pode falar com o abrigo para entrar na lista de espera.
+          </p>
+        )}
+        {adotado && (
+          <p className={styles.avisoStatus} role="note">
+            {animal.nome} já encontrou um lar! Que tal conhecer outros animais do {abrigo.nome}?
+          </p>
+        )}
 
         <div className={styles.acoes}>
           <Button
@@ -127,24 +218,31 @@ export function PerfilAnimal() {
           >
             <Heart size={16} fill={fav ? "currentColor" : "none"} /> {fav ? "Adicionado aos favoritos" : "Adicionar aos favoritos"}
           </Button>
-          <Button
-            variant="primary"
-            className={[styles.acaoBtn, styles.acaoFalar].join(" ")}
-            href={`https://wa.me/55${abrigo.telefone.replace(/\D/g, "")}`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <MessageCircle size={16} /> Falar com o abrigo
-          </Button>
+          {adotado ? (
+            <Button variant="primary" className={[styles.acaoBtn, styles.acaoFalar].join(" ")} to={`/abrigo/${abrigo.id}`}>
+              Ver outros animais do abrigo <ArrowRight size={16} />
+            </Button>
+          ) : (
+            <Button
+              variant="primary"
+              className={[styles.acaoBtn, styles.acaoFalar].join(" ")}
+              href={linkWhatsApp(abrigo.telefone)}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <MessageCircle size={16} /> Falar com o abrigo pelo WhatsApp
+            </Button>
+          )}
         </div>
+        {!adotado && (
+          <p className={styles.outrosContatos}>
+            Prefere outro canal? <a href={linkTelefone(abrigo.telefone)}>Ligar para {abrigo.telefone}</a> ou{" "}
+            <a href={`mailto:${abrigo.email}?subject=${encodeURIComponent(`Interesse em adotar ${animal.nome}`)}`}>enviar e-mail</a>.
+          </p>
+        )}
 
         <Panel>
-          <div className={styles.sectionTitle}>
-            <span className={styles.sectionIcon} aria-hidden="true">
-              <Building2 size={17} />
-            </span>
-            <h3>Onde estou</h3>
-          </div>
+          <SectionTitle icon={Building2} title="Onde estou" />
 
           <div className={styles.ondeEstou}>
             <div className={styles.abrigoInfo}>
@@ -156,28 +254,22 @@ export function PerfilAnimal() {
                 <p className={styles.abrigoSlogan}>{abrigo.slogan}</p>
                 <ul className={styles.abrigoContato}>
                   <li>
-                    <MapPin size={15} aria-hidden="true" /> {abrigo.cidade}
+                    <MapPin size={15} aria-hidden="true" /> {abrigo.endereco} · {abrigo.cidade}
                   </li>
                   <li>
-                    <Phone size={15} aria-hidden="true" /> {abrigo.telefone}
+                    <Phone size={15} aria-hidden="true" /> <a href={linkTelefone(abrigo.telefone)}>{abrigo.telefone}</a>
                   </li>
                   <li>
-                    <Mail size={15} aria-hidden="true" /> {abrigo.email}
+                    <Mail size={15} aria-hidden="true" /> <a href={`mailto:${abrigo.email}`}>{abrigo.email}</a>
                   </li>
                 </ul>
+                <Button to={`/abrigo/${abrigo.id}`} variant="secondary" size="sm" className={styles.abrigoLink}>
+                  Conhecer o abrigo <ArrowRight size={14} />
+                </Button>
               </div>
             </div>
 
-            <div className={styles.mapaPlaceholder}>
-              <div className={styles.mapaPin}>
-                <MapPin size={18} className={styles.mapaPinIcon} aria-hidden="true" />
-                <span>
-                  <strong>{abrigo.nome}</strong>
-                  <br />
-                  {abrigo.cidade}
-                </span>
-              </div>
-            </div>
+            <MapaAbrigos abrigos={[abrigo]} ativoId={abrigo.id} compacto />
           </div>
         </Panel>
       </main>

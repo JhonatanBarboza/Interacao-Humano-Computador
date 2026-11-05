@@ -64,11 +64,10 @@ button {
 .container {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 var(--space-6);
 }
 
 .page-shell {
-  background: var(--color-terracota);
+  background: var(--color-terracota-dark);
   min-height: 100vh;
   padding: var(--space-5) 0 var(--space-16);
 }

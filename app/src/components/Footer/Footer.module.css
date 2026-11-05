@@ -8,3 +8,21 @@
 .heart {
   vertical-align: -2px;
 }
+
+.lema {
+  margin: 0 0 var(--space-2);
+}
+
+.instituicao {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--text-xs);
+  color: #f3ded9;
+  opacity: 0.85;
+  text-decoration: underline;
+}
+
+.instituicao:hover {
+  opacity: 1;
+}
