@@ -1,6 +1,7 @@
+import { PawPrint } from "lucide-react";
 import styles from "./EmptyState.module.css";
 
-export function EmptyState({ icon = "🐾", title, description, action }) {
+export function EmptyState({ icon = <PawPrint />, title, description, action }) {
   return (
     <div className={styles.empty}>
       <span className={styles.icon}>{icon}</span>

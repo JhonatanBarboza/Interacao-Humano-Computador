@@ -1,0 +1,31 @@
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: var(--space-6);
+  transform: translateX(-50%);
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  background: var(--color-text);
+  color: var(--color-white);
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-lg);
+  font-weight: var(--font-weight-semibold);
+  max-width: calc(100vw - 2rem);
+}
+
+.toast svg {
+  color: #9fd3ad;
+  flex-shrink: 0;
+}
+
+.acao {
+  border: none;
+  background: transparent;
+  color: #f8c9bd;
+  font-weight: var(--font-weight-bold);
+  text-decoration: underline;
+  padding: 0;
+}

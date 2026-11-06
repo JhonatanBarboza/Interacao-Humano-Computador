@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import { Building2, Heart, Home, PawPrint } from "lucide-react";
 import { useFavorites } from "../../hooks/useFavorites";
 import { Button } from "../Button/Button";
 import styles from "./Header.module.css";
@@ -11,7 +12,9 @@ export function Header() {
   return (
     <header className={styles.header}>
       <NavLink to="/" className={styles.brand}>
-        <span className={styles.mark}>🐾</span>
+        <span className={styles.mark}>
+          <PawPrint size={22} />
+        </span>
         <span>
           <h1>Patas que Acolhem</h1>
           <span className={styles.tagline}>Mais lares. Mais histórias felizes.</span>
@@ -20,23 +23,20 @@ export function Header() {
 
       <nav className={styles.nav}>
         <NavLink to="/" end className={navLinkClass}>
-          🏠 Início
+          <Home size={16} /> Início
         </NavLink>
         <NavLink to="/abrigos" className={navLinkClass}>
-          🏢 Abrigos
+          <Building2 size={16} /> Abrigos
         </NavLink>
         <NavLink to="/favoritos" className={navLinkClass}>
-          ♥ Favoritos
+          <Heart size={16} /> Favoritos
           {favoritos.length > 0 && <span className={styles.favBadge}>{favoritos.length}</span>}
         </NavLink>
       </nav>
 
       <div className={styles.actions}>
-        <Button to="/painel" variant="ghost" size="sm">
-          Área da instituição
-        </Button>
-        <Button to="/abrigo/esperanca" variant="primary" size="sm">
-          ♥ Quero Ajudar
+        <Button to="/abrigos" variant="secondary" size="sm">
+          <Heart size={16} /> Quero Ajudar
         </Button>
       </div>
     </header>

@@ -1,0 +1,39 @@
+.secao {
+  padding-bottom: var(--space-2);
+  margin-bottom: var(--space-5);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.secao h3 {
+  font-size: var(--text-lg);
+  margin-bottom: var(--space-4);
+}
+
+.duas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+.tres {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+}
+
+.rodape {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-3);
+}
+
+@media (max-width: 640px) {
+  .duas,
+  .tres {
+    grid-template-columns: 1fr;
+  }
+
+  .rodape {
+    flex-direction: column-reverse;
+  }
+}

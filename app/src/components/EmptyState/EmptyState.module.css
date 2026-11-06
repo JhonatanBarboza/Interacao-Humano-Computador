@@ -8,9 +8,17 @@
 }
 
 .icon {
-  font-size: 3rem;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-bottom: var(--space-3);
+  color: var(--color-terracota);
+}
+
+.icon svg {
+  width: 3rem;
+  height: 3rem;
+  stroke-width: 1.5;
 }
 
 .empty h3 {

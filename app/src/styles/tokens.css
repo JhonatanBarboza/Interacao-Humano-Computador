@@ -8,7 +8,7 @@
 :root {
   /* ---------- Cor ---------- */
   --color-terracota: #b85042;
-  --color-terracota-dark: #9a3f33;
+  --color-terracota-dark: #9A5546;
   --color-terracota-light: #f3ddd8;
 
   --color-areia: #e7e8d1;
@@ -28,6 +28,14 @@
   --color-warning-bg: #f5ead4;
   --color-neutral-text: #7a7a72;
   --color-neutral-bg: #eeeee6;
+
+  /* acentos suaves — usados nos ícones de dados do perfil do animal */
+  --color-rosa-light: #f7dde3;
+  --color-rosa-dark: #b8546f;
+  --color-laranja-light: #fbe4cd;
+  --color-laranja-dark: #c17a2e;
+  --color-azul-light: #dde8f7;
+  --color-azul-dark: #3b6ea5;
 
   /* aliases semânticos */
   --color-bg: var(--color-white);

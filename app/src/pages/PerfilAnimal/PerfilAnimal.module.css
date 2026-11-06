@@ -1,0 +1,418 @@
+.topGrid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: var(--space-5);
+  margin-bottom: var(--space-5);
+}
+
+@media (max-width: 860px) {
+  .topGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Galeria ---------- */
+
+.galeria {
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.fotoPrincipal {
+  position: relative;
+  flex: 1;
+  min-height: 480px;
+  background: linear-gradient(135deg, var(--color-areia), var(--color-sage));
+}
+
+.fotoPrincipal img {
+  width: 95%;
+  height: 95%;
+  object-fit: cover;
+}
+
+.badgeAdocao {
+  position: absolute;
+  top: var(--space-4);
+  left: var(--space-4);
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.18));
+}
+
+.favBtn {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--color-terracota);
+  font-size: var(--text-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: transform 0.12s ease, background 0.12s ease;
+}
+.favBtn:hover {
+  transform: scale(1.06);
+}
+.favBtnActive {
+  background: var(--color-terracota);
+  color: var(--color-white);
+}
+
+.navBtn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.85);
+  font-size: var(--text-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: transform 0.12s ease;
+}
+.navBtn:hover {
+  transform: translateY(-50%) scale(1.06);
+}
+.navPrev {
+  left: var(--space-3);
+}
+.navNext {
+  right: var(--space-3);
+}
+
+.dots {
+  position: absolute;
+  bottom: var(--space-3);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: var(--space-2);
+}
+
+.dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  background: rgba(255, 255, 255, 0.6);
+}
+.dotActive {
+  background: var(--color-white);
+}
+
+/* ---------- Coluna de dados ---------- */
+
+.infoCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.identidade {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.iconeCirculo {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--color-terracota-light);
+  color: var(--color-terracota-dark);
+  font-size: var(--text-xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.nome {
+  margin: 0;
+  font-size: var(--text-2xl);
+}
+
+.dadosGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+.dadoItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  background: var(--color-bg-muted);
+  border-radius: var(--radius-sm);
+  padding: var(--space-3) var(--space-4);
+}
+
+.dadoIcon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-md);
+  font-weight: var(--font-weight-bold);
+  flex-shrink: 0;
+}
+
+.tone-terracota {
+  background: var(--color-terracota-light);
+  color: var(--color-terracota-dark);
+}
+.tone-rosa {
+  background: var(--color-rosa-light);
+  color: var(--color-rosa-dark);
+}
+.tone-laranja {
+  background: var(--color-laranja-light);
+  color: var(--color-laranja-dark);
+}
+.tone-azul {
+  background: var(--color-azul-light);
+  color: var(--color-azul-dark);
+}
+
+.dadoLabel {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+.dadoValue {
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-bold);
+}
+
+/* ---------- Sobre mim ---------- */
+
+.descricao {
+  color: var(--color-text-muted);
+  margin: 0;
+  white-space: pre-line;
+}
+
+/* ---------- Ações ---------- */
+
+.acoes {
+  display: flex;
+  gap: var(--space-4);
+  margin: var(--space-5) 0;
+}
+
+.acaoBtn {
+  flex: 1;
+}
+
+/* Os botões de ação ficam direto sobre o fundo terracota do page-shell
+   (fora de um Panel branco), então precisam de contraste próprio —
+   o outline/preenchido padrão do Button foi pensado para fundo claro. */
+.acaoFavoritar {
+  background: var(--color-white);
+}
+
+/* terracota (e não terracota-dark), que hoje é a mesma cor do fundo da página */
+.acaoFalar {
+  background: var(--color-terracota);
+  box-shadow: var(--shadow-lg);
+}
+
+@media (max-width: 560px) {
+  .acoes {
+    flex-direction: column;
+  }
+}
+
+/* ---------- Onde estou ---------- */
+
+.ondeEstou {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+  align-items: center;
+}
+
+@media (max-width: 700px) {
+  .ondeEstou {
+    grid-template-columns: 1fr;
+  }
+}
+
+.abrigoInfo {
+  display: flex;
+  gap: var(--space-4);
+  align-items: flex-start;
+}
+
+.abrigoAvatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--color-terracota-light);
+  color: var(--color-terracota-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-xl);
+  flex-shrink: 0;
+}
+
+.abrigoNome {
+  margin: 0 0 var(--space-1);
+  font-size: var(--text-lg);
+}
+
+.abrigoSlogan {
+  margin: 0 0 var(--space-3);
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+.abrigoContato {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.abrigoContato li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+}
+
+.abrigoContato a {
+  text-decoration: underline;
+}
+
+.abrigoContato li svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--color-terracota);
+}
+
+.abrigoLink {
+  margin-top: var(--space-4);
+}
+
+/* ---------- Saúde e temperamento ---------- */
+
+.temperamento {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: var(--color-terracota-light);
+  color: var(--color-terracota-dark);
+  border-radius: var(--radius-sm);
+  padding: var(--space-2) var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.saudeLista {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2);
+}
+
+.saudeLista li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  border-radius: var(--radius-sm);
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-semibold);
+}
+
+.saudeLista li span {
+  flex: 1;
+}
+
+.saudeOk {
+  background: var(--color-success-bg);
+  color: var(--color-success);
+}
+
+.saudeNao {
+  background: var(--color-neutral-bg);
+  color: var(--color-neutral-text);
+}
+
+.especiais {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin: var(--space-3) 0 0;
+  font-size: var(--text-sm);
+  color: var(--color-warning);
+  font-weight: var(--font-weight-semibold);
+}
+
+@media (max-width: 480px) {
+  .saudeLista {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Pré-requisitos e avisos de status ---------- */
+
+.requisitos {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  color: var(--color-text-muted);
+}
+
+.requisitos li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+}
+
+.requisitos svg {
+  color: var(--color-success);
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.avisoStatus {
+  margin: var(--space-5) 0 0;
+  background: var(--color-warning-bg);
+  color: #7a5523;
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-5);
+  font-weight: var(--font-weight-semibold);
+}
+
+.outrosContatos {
+  margin: calc(-1 * var(--space-2)) 0 var(--space-5);
+  text-align: center;
+  color: #f3ded9;
+  font-size: var(--text-sm);
+}
+
+.outrosContatos a {
+  color: var(--color-white);
+  font-weight: var(--font-weight-bold);
+  text-decoration: underline;
+}

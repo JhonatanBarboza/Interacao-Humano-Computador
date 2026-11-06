@@ -27,3 +27,13 @@
   background: var(--color-neutral-bg);
   color: var(--color-neutral-text);
 }
+
+.dot-success {
+  background: var(--color-success);
+}
+.dot-warning {
+  background: var(--color-warning);
+}
+.dot-neutral {
+  background: var(--color-neutral-text);
+}

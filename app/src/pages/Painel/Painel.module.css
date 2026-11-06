@@ -1,0 +1,142 @@
+.acoes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.acao {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-5);
+  border-radius: var(--radius-md);
+  border: 2px solid var(--color-border);
+  transition: border-color 0.12s ease, transform 0.12s ease;
+}
+
+.acao:hover {
+  border-color: var(--color-terracota);
+  transform: translateY(-2px);
+}
+
+.acao svg {
+  color: var(--color-terracota);
+}
+
+.acao strong {
+  font-size: var(--text-lg);
+  font-family: var(--font-heading);
+}
+
+.acao span {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.acaoPrincipal {
+  background: var(--color-terracota);
+  border-color: var(--color-terracota);
+  color: var(--color-white);
+}
+
+.acaoPrincipal svg,
+.acaoPrincipal span {
+  color: var(--color-white);
+}
+
+.acaoPrincipal:hover {
+  background: var(--color-terracota-dark);
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+
+.stat {
+  background: var(--color-bg-muted);
+  border-radius: var(--radius-sm);
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+}
+
+.stat strong {
+  font-family: var(--font-heading);
+  font-size: var(--text-3xl);
+  color: var(--color-terracota-dark);
+}
+
+.stat span {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.atencao h3 {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-lg);
+}
+
+.atencao h3 svg {
+  color: var(--color-warning);
+}
+
+.atencao ul {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.atencao li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  background: var(--color-warning-bg);
+  border-radius: var(--radius-sm);
+  padding: var(--space-2) var(--space-4);
+}
+
+.atencao li span {
+  flex: 1;
+}
+
+.atencao li > svg {
+  color: var(--color-warning);
+}
+
+.tudoCerto {
+  color: var(--color-success);
+  font-weight: var(--font-weight-semibold);
+}
+
+.rodape {
+  margin-top: var(--space-8);
+  text-align: right;
+}
+
+.restaurar {
+  border: none;
+  background: none;
+  padding: 0;
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  text-decoration: underline;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+@media (max-width: 860px) {
+  .acoes {
+    grid-template-columns: 1fr;
+  }
+
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

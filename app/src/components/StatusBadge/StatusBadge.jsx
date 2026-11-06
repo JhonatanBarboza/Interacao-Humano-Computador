@@ -1,3 +1,4 @@
+import { PawPrint } from "lucide-react";
 import { STATUS_BADGE_TONE, STATUS_LABEL } from "../../data";
 import styles from "./StatusBadge.module.css";
 
@@ -18,7 +19,7 @@ export function StatusBadge({ status, variant = "short", withDot = false }) {
 
   return (
     <span className={[styles.badge, styles[tone]].join(" ")}>
-      {withDot ? <span className={[styles.dot, styles[tone]].join(" ")} /> : "🐾"} {label}
+      {withDot ? <span className={[styles.dot, styles[`dot-${tone}`]].join(" ")} /> : <PawPrint size={12} />} {label}
     </span>
   );
 }
