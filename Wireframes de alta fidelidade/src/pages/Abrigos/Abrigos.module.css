@@ -2,6 +2,27 @@
   margin-bottom: var(--space-5);
 }
 
+.cabecalho {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.acessoInstituicao {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--space-2);
+}
+
+@media (max-width: 640px) {
+  .acessoInstituicao {
+    align-items: flex-start;
+  }
+}
+
 .filtros {
   display: flex;
   gap: var(--space-4);

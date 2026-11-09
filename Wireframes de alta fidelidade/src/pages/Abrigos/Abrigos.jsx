@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ArrowRight, Building2, MapPin, PawPrint } from "lucide-react";
+import { ArrowRight, Building2, LogIn, MapPin, PawPrint } from "lucide-react";
 import { PageShell } from "../../components/PageShell/PageShell";
 import { Panel } from "../../components/Panel/Panel";
 import { Button } from "../../components/Button/Button";
@@ -9,11 +9,13 @@ import { SectionTitle } from "../../components/SectionTitle/SectionTitle";
 import { MapaAbrigos } from "../../components/MapaAbrigos/MapaAbrigos";
 import { EmptyState } from "../../components/EmptyState/EmptyState";
 import { controlClass } from "../../components/Field/controlClass";
+import { useSessao } from "../../hooks/useSessao";
 import { LOCALIZACAO_USUARIO, RAIOS_KM, getAnimaisPorAbrigo, useDados } from "../../data";
 import styles from "./Abrigos.module.css";
 
 export function Abrigos() {
   const dados = useDados();
+  const { abrigoId } = useSessao();
   const [cidade, setCidade] = useState("");
   const [raio, setRaio] = useState(0);
   const [ativoId, setAtivoId] = useState(null);
@@ -27,12 +29,19 @@ export function Abrigos() {
     <PageShell>
       <main className="container">
         <Panel className={styles.topo}>
-          <SectionTitle
-            as="h2"
-            icon={Building2}
-            title="Abrigos participantes"
-            subtitle="Encontre ONGs e abrigos perto de você, conheça o trabalho deles e descubra como ajudar."
-          />
+          <div className={styles.cabecalho}>
+            <SectionTitle
+              as="h2"
+              icon={Building2}
+              title="Abrigos participantes"
+              subtitle="Encontre ONGs e abrigos perto de você, conheça o trabalho deles e descubra como ajudar."
+            />
+            <div className={styles.acessoInstituicao}>
+              <Button to={abrigoId ? "/painel" : "/login"}>
+                <LogIn size={16} aria-hidden="true" /> {abrigoId ? "Ir para o meu painel" : "Entrar na minha instituição"}
+              </Button>
+            </div>
+          </div>
           <div className={styles.filtros}>
             <select className={controlClass} aria-label="Filtrar por cidade" value={cidade} onChange={(e) => setCidade(e.target.value)}>
               <option value="">Todas as cidades</option>
